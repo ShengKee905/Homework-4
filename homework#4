@@ -1,0 +1,118 @@
+#2: List Slicing and Striding
+#2.1
+list0_50 = list(range(51))
+print(list0_50)
+
+#x = [0:50]
+#      ^
+#SyntaxError: invalid syntax
+#   Fixed this by changing to "x" to "list0_50" and [0:50] to list(range(51))
+
+#2.2
+lis = [1,2,3,4,5,6,7]
+def square(input_list):
+    squared_list = [number**2 for number in lis]
+    return(squared_list)
+print(square(lis))
+
+# print(square(list))
+#         ^^^^^^^^^^^^
+#TypeError: square() takes 0 positional arguments but 1 was given
+#   Fixed this by changing "def square():" to "def square(list):"
+
+#2.3
+listA = list(range(1,11))
+listB = list(range(20,31))
+
+combined_list = listA + listB
+
+odd_integers = [number for number in combined_list if number % 2 != 0]
+
+print(odd_integers)
+
+# listA = list(range(11))
+#           ^^^^^^^^^^^^^^^
+#TypeError: 'list' object is not callable
+#   Fixed this by changing "list" in problem 2.2 to "lis"
+
+#odd_integers = [number % 2 for number in listA, listB]
+#                                                 ^
+#SyntaxError: invalid syntax
+#   Fixed this by deleting the entire line as the code was wrong anyway
+
+#if number // 0 != 0:
+#      ~~~~~~~^^~~
+#TypeError: unsupported operand type(s) for //: 'list' and 'int'
+#   Fixed this by changing "//" operand to "%"
+
+#if number % 0 != 0:
+#      ~~~~~~~^~~
+#TypeError: unsupported operand type(s) for %: 'list' and 'int'
+
+#odd_integers.append(number)
+#   ^^^^^^^^^^^^^^^^^^^
+#AttributeError: 'tuple' object has no attribute 'append'
+#   switched "odd_integers" and "number"
+
+#3.1
+
+matrix = []
+
+count = 1
+
+for i in range(5):
+    row = []
+    for n in range(5):
+        row.append(count)
+        count += 1
+    matrix.append(row)
+    print(row)
+
+
+# twod_list = twod_list + 5
+#               ~~~~~~~~~~^~~
+#TypeError: can only concatenate list (not "int") to list
+#       fixed this by deleting the line and replacing it with "number = number + 5"
+
+#3.2
+matrix = []
+
+count = 1
+
+for i in range(5):
+    row = []
+    for n in range(5):
+        if count % 3 == 0:
+            row.append("?")
+            count += 1
+        else:
+            row.append(count)
+            count += 1
+    matrix.append(row)
+    print(row)
+
+#4
+lis = [1,1,2,3,4,4]
+
+def removeDuplicates(lis):
+    ls = []
+    for n in lis:
+        if n not in ls:
+            ls.append(n)
+    return ls
+print(removeDuplicates(lis))
+
+#    for i in range(lis):
+#            ^^^^^^^^^^
+#TypeError: 'list' object cannot be interpreted as an integer
+#   Fixed this by changing the inside the range bracket to "len(list)"
+
+#    for i in range(len(list)):
+#                  ^^^^^^^^^
+#TypeError: object of type 'type' has no len()
+#   Fixed this by replacing "list" with "len"
+
+#if lis[n] == lis[j]:
+#      ~~~^^^
+#TypeError: 'NoneType' object is not subscriptable
+#   fixed this by removing the entire code
